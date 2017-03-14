@@ -27,7 +27,7 @@ class Login extends Model
 
     public function test(){
         $name = input('get.name');
-        $brand = GoodsBrands::get(['name' => $name]);
+        $brand = User::get(['name' => $name]);
         if ($brand){
             return json(array(
                 'status' => 1,
