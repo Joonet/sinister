@@ -23,4 +23,25 @@ class Register
             echo '新增用户成功';
         }
     }
+
+
+    public function test(){
+        echo add(2,5);
+        $id = input('post.id');
+        $name = input('post.name');
+        $brand = GoodsBrands::get(['id' => $id,'name' => $name]);
+        if ($brand){
+            return json(array(
+                'status' => 1,
+                'msg' => '查询成功',
+                'data' => $brand,
+            ));
+        }else{
+            return json(array(
+                'status' => -1,
+                'msg' => 'user does not exist',
+                'data' => '',
+            ));
+        }
+    }
 }

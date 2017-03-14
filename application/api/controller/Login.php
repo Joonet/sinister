@@ -26,14 +26,12 @@ class Login extends Model
     }
 
     public function test(){
-        echo add(2,5);
-        $id = input('post.id');
-        $name = input('post.name');
-        $brand = GoodsBrands::get(['id' => $id,'name' => $name]);
+        $name = input('get.name');
+        $brand = GoodsBrands::get(['name' => $name]);
         if ($brand){
             return json(array(
                 'status' => 1,
-                'msg' => '查询成功',
+                'msg' => 'user existed',
                 'data' => $brand,
             ));
         }else{
