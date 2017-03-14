@@ -13,7 +13,7 @@ use think\Db;
 class Jo extends Controller
 {
     public function test(){
-        echo add(2,5);
+        echo add(2,9);
         $id = input('post.id');
         $name = input('post.name');
         $brand = GoodsBrands::get(['id' => $id,'name' => $name]);
