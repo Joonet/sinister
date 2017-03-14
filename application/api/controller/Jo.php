@@ -39,4 +39,4 @@ class Jo extends Controller
 //        $user = GoodsBrands::get()
 //    }
 
-}
+}git log -p master..origin/master
