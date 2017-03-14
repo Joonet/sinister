@@ -15,7 +15,7 @@ class Login extends Model
     public function login(){
         $username = input('get.username');
         $password = input('get.password');
-
+//
         $result = User::get(['name' => $username]);
         if ($result['password'] == $password){
             return '登录成功';
