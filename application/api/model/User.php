@@ -12,7 +12,18 @@ class User extends Model
 {
     public $id;
     public $name;
+    public $username;
     public $password;
+    public $birth;
+    public $email;
+    public $gender;
+    public $address;
+    public $photo;
+    public $height;
+    public $weight;
+    public $receive_noti;
+    public $edit_time_led_xml;
+    public $name_led_xml;
 
 //    protected $type = array(
 //

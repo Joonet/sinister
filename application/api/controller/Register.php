@@ -12,36 +12,39 @@ use app\api\model\User;
 class Register
 {
     public function register(){
-        $username = input('get.username');
-        $password = input('get.password');         //经过客户端加密后的字符串
-
         //写到数据库
         $user = new User();
-        $user['name'] = $username;
-        $user['password'] = $password;
+        $user['name'] = input('post.name');
+        $user['username'] = input('post.username');
+        $user['password'] = input('post.password');         //经过客户端加密后的字符串
+        $user['birth'] = input('post.birth');
+        $user['address'] = input('post.address');
+        $user['email'] = input('post.email');
+        $user['gender'] = input('post.gender');
+        $user['receive_noti'] = input('post.receive_noti');
+        $user['edit_time_led_xml'] = input('post.edit_time_led_xml');
+        $user['name_led_xml'] = input('post.name_led_xml');
+
+
         if ($user->save()){
-            echo '新增用户成功';
-        }
-    }
-
-
-    public function test(){
-        echo add(2,5);
-        $id = input('post.id');
-        $name = input('post.name');
-        $brand = GoodsBrands::get(['id' => $id,'name' => $name]);
-        if ($brand){
             return json(array(
                 'status' => 1,
-                'msg' => '查询成功',
-                'data' => $brand,
-            ));
-        }else{
-            return json(array(
-                'status' => -1,
-                'msg' => 'user does not exist',
-                'data' => '',
+                'msg' => 'register succeed',
+                'data' => ''
             ));
         }
     }
+
+    //用户是否存在
+    public function isUserAvailable(){
+        $username = input('post.username');
+        if (User::get(['username' => $username])){
+            return json(array(
+                'status' => -1,
+                'msg' => 'user existed already',
+                'data' => ''
+            ));
+        }
+    }
+
 }

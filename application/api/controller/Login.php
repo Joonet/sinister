@@ -16,31 +16,22 @@ class Login extends Model
         $username = input('get.username');
         $password = input('get.password');
 //
-        $result = User::get(['name' => $username]);
+        $result = User::get(['username' => $username]);
         if ($result['password'] == $password){
-            return '登录成功';
-        }else{
-            return '登录失败';
-        }
-
-    }
-
-    public function test(){
-        $name = input('get.name');
-        $brand = User::get(['name' => $name]);
-        if ($brand){
             return json(array(
                 'status' => 1,
-                'msg' => 'user existed',
-                'data' => $brand,
+                'msg' => 'Login succeed',
+                'data' => $result
             ));
         }else{
             return json(array(
                 'status' => -1,
-                'msg' => 'user does not exist',
+                'msg' => 'wrong password',
                 'data' => '',
             ));
         }
+
     }
+
 
 }
