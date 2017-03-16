@@ -41,12 +41,4 @@ class Info extends Controller
 
     }
 
-    // 更新用户数据
-    public function update($id) {
-        $user = UserModel::get($id); $user->nickname = '刘晨';
-        $user->email = 'liu21st@gmail.com'; if (false !== $user->save()) {
-            return '更新用户成功'; } else {
-            return $user->getError();
-        }
-    }
 }
