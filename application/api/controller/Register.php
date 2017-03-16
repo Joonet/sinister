@@ -27,11 +27,9 @@ class Register
 
 
         if ($user->save()){
-            return json(array(
-                'status' => 1,
-                'msg' => 'register succeed',
-                'data' => ''
-            ));
+            return myJson(200, '注册成功');
+        }else{
+            return myJson(201, $user->getError());
         }
     }
 
@@ -39,11 +37,9 @@ class Register
     public function isUserAvailable(){
         $username = input('post.username');
         if (User::get(['username' => $username])){
-            return json(array(
-                'status' => -1,
-                'msg' => 'user existed already',
-                'data' => ''
-            ));
+            return myJson(201, '用户已存在');
+        }else{
+            return myJson(200, '有效用户，欢迎注册');
         }
     }
 

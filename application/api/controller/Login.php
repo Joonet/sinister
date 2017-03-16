@@ -9,26 +9,19 @@
 namespace app\api\controller;
 use app\api\model\User;
 use think\Model;
+use think\Controller;
 
-class Login extends Model
+class Login extends Controller
 {
     public function login(){
-        $username = input('get.username');
-        $password = input('get.password');
+        $username = input('post.username');
+        $password = input('post.password');
 //
         $result = User::get(['username' => $username]);
         if ($result['password'] == $password){
-            return json(array(
-                'status' => 1,
-                'msg' => 'Login succeed',
-                'data' => $result
-            ));
+            return myJson(200, '登录成功', $result);
         }else{
-            return json(array(
-                'status' => -1,
-                'msg' => 'wrong password',
-                'data' => '',
-            ));
+            return myJson(201, '登录失败');
         }
 
     }

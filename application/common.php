@@ -15,3 +15,23 @@ function add($a,$b){
     if (is_numeric($a) && is_numeric($b))
         return $a+$b;
 }
+
+/***
+ * @param integer $code 状态码
+ * @param string $message 提示信息
+ * @param array $data 数据
+ * @return string
+ */
+function myJson($code, $message = '', $data = array()){
+    if (!is_numeric($code)){
+        return '';
+    }
+
+    return json(array(
+        'code' => $code,
+        'message' => $message,
+        'data' => $data
+    ));
+}
+
+

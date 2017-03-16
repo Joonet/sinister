@@ -133,7 +133,7 @@ class Index1 extends Controller
 //            echo "<br/>";
 //            echo $user['email'];
 
-//          根据某个条件查询数据 getByXxxx() 方法
+          //根据某个条件查询数据 getByXxxx() 方法
 //            $user = Users::getByMobile('123456');
 //            echo $user['mobile'];
 //            echo "<br/>";
